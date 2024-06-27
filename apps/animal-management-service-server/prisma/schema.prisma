@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model AnimalReport {
+  createdAt   DateTime                @default(now())
+  description String?
+  id          String                  @id @default(cuid())
+  location    Json?
+  status      EnumAnimalReportStatus?
+  timestamp   DateTime?
+  updatedAt   DateTime                @updatedAt
+  userId      String?
+}
+
+enum EnumAnimalReportStatus {
+  Option1
+}
