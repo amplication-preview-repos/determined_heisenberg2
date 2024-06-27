@@ -1,0 +1,29 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model VolunteerProfile {
+  availability EnumVolunteerProfileAvailability[]
+  bio          String?
+  createdAt    DateTime                           @default(now())
+  email        String?
+  experience   EnumVolunteerProfileExperience?
+  fullName     String?
+  id           String                             @id @default(cuid())
+  phoneNumber  String?
+  updatedAt    DateTime                           @updatedAt
+  userId       String?
+}
+
+enum EnumVolunteerProfileAvailability {
+  Option1
+}
+
+enum EnumVolunteerProfileExperience {
+  Option1
+}
